@@ -1,0 +1,32 @@
+<h3>All registered users:</h3>
+<div class="container" style="padding-left: 0px; padding-right: 0px;">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Username</th>
+          <th>Role</th>
+          <th>Login Time</th>
+          <th>Logout Time</th>
+          <th>IP</th>
+          <th>Created Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users | paginate: { itemsPerPage: 5, currentPage: p }"> 
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.role}}</td>
+          <td>{{user.loginTime || '-'}}</td>
+          <td>{{user.logoutTime || '-'}}</td>
+          <td>{{user.ip || '-'}}</td>
+          <td>{{user.createdDate}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<pagination-controls style="float: right;" (pageChange)="p = $event"></pagination-controls>
